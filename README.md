@@ -34,15 +34,73 @@ The maximum possible groupings of adjacent ones are already shown in the figure.
 
 **Procedure**
 
-/* write all the steps invloved */
+
+1.Type the program in Quartus software.
+
+
+
+
+2.Compile and run the program.
+
+
+
+
+3.Generate the RTL schematic and save the logic diagram.
+
+
+
+
+4.Create nodes for inputs and outputs to generate the timing diagram.
+
+
+
+
+
+5.For different input combinations generate the timing diagram.
+
+
 
 **PROGRAM**
 
-/* Program for flipflops and verify its truth table in quartus using Verilog programming. Developed by: RegisterNumber:
-*/
+/* Program for flipflops and verify its truth table in quartus using Verilog programming. 
+```
+module sr_ff (
+    input  wire clk, rst, S, R,
+    output reg  Q
+);
+    always @(posedge clk) begin
+        if (rst)
+            Q <= 1'b0;         
+        else begin
+            case ({S,R})
+                2'b00: Q <= Q;    
+                2'b01: Q <= 1'b0; 
+                2'b10: Q <= 1'b1; 
+                2'b11: Q <= 1'bx;  
+            endcase
+        end
+    end
+endmodule
 
+
+
+module d_ff (
+    input  wire clk, rst, D,
+    output reg  Q
+);
+    always @(posedge clk or posedge rst) begin
+        if (rst)
+            Q <= 1'b0;  
+        else
+            Q <= D;     
+    end
+endmodule
+```
 **RTL LOGIC FOR FLIPFLOPS**
+<img width="1920" height="1020" alt="Screenshot 2025-12-14 180401" src="https://github.com/user-attachments/assets/1cd6a7e9-4426-4d79-9b31-c4bdab5a8453" />
 
 **TIMING DIGRAMS FOR FLIP FLOPS**
+<img width="1314" height="766" alt="Screenshot 2025-12-14 190944" src="https://github.com/user-attachments/assets/b0869c48-fcf2-40bc-8911-0b29a8dd8d14" />
 
 **RESULTS**
+Thus 4-bit ripple counter is implemented using verilog and the functionality is validated using function tables.
