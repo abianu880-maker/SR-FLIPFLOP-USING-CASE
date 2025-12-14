@@ -84,17 +84,7 @@ endmodule
 
 
 
-module d_ff (
-    input  wire clk, rst, D,
-    output reg  Q
-);
-    always @(posedge clk or posedge rst) begin
-        if (rst)
-            Q <= 1'b0;  
-        else
-            Q <= D;     
-    end
-endmodule
+
 ```
 **RTL LOGIC FOR FLIPFLOPS**
 <img width="1920" height="1020" alt="Screenshot 2025-12-14 180401" src="https://github.com/user-attachments/assets/1cd6a7e9-4426-4d79-9b31-c4bdab5a8453" />
